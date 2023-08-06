@@ -4,8 +4,8 @@ resource "azurerm_resource_group" "acr_aks_rg" {
 }
 
 resource "azurerm_container_registry" "terraform_acr" {
-  name                = "tfacr08052023"
-  resource_group_name = azurerm_resource_group.acr_aks_rg.name
+  name                = "tfstate"
+  resource_group_name = jagadesh
   location            = azurerm_resource_group.acr_aks_rg.location
   sku                 = "Basic"
 }
@@ -13,7 +13,7 @@ resource "azurerm_container_registry" "terraform_acr" {
 resource "azurerm_kubernetes_cluster" "terraform_aks" {
   name                = "terraform-aks"
   location            = azurerm_resource_group.acr_aks_rg.location
-  resource_group_name = azurerm_resource_group.acr_aks_rg.name
+  resource_group_name = jagadesh
   dns_prefix          = "terraformaks"
 
   default_node_pool {
