@@ -43,22 +43,22 @@ jobs:
         uses: azure/CLI@v1
         with:
           inlineScript: |
-            registryId=$(az acr show --name tfacr08052023 --resource-group acr-aks-rg --query id --output tsv)
+            registryId=$(az acr show --name jagadeshacr12 --resource-group acr-aks-rg --query id --output tsv)
             MSYS_NO_PATHCONV=1 az role assignment create --assignee ${{ secrets.ARM_CLIENT_ID }} --scope $registryId --role AcrPush
 
       - name: "Build and push image"
         uses: azure/docker-login@v1
         with:
-          login-server: tfacr08052023.azurecr.io
+          login-server: jagadeshacr12.azurecr.io
           username: ${{ secrets.ARM_CLIENT_ID }}
           password: ${{ secrets.ARM_CLIENT_SECRET }}
       - run: |
-          docker build ./UserApi -t tfacr08052023.azurecr.io/userapi
-          docker push tfacr08052023.azurecr.io/userapi
-          docker build ./CourseApi -t tfacr08052023.azurecr.io/courseapi
-          docker push tfacr08052023.azurecr.io/courseapi
-          docker build ./TasksApi -t tfacr08052023.azurecr.io/tasksapi
-          docker push tfacr08052023.azurecr.io/tasksapi
+          docker build ./UserApi -t jagadeshacr12.azurecr.io/userapi
+          docker push jagadeshacr12.azurecr.io/userapi
+          docker build ./CourseApi -t jagadeshacr12.azurecr.io/courseapi
+          docker push jagadeshacr12.azurecr.io/courseapi
+          docker build ./TasksApi -t jagadeshacr12.azurecr.io/tasksapi
+          docker push jagadeshacr12.azurecr.io/tasksapi
 
       - name: Set AKS context
         id: set-context
@@ -81,7 +81,7 @@ jobs:
             manifests/courseapi-deployment.yaml
             manifests/tasksapi-deployment.yaml
           images: |
-            tfacr08052023.azurecr.io/userapi/userapi
-            tfacr08052023.azurecr.io/courseapi/courseapi
-            tfacr08052023.azurecr.io/tasksapi/tasksapi
+            jagadeshacr12.azurecr.io/userapi/userapi
+            jagadeshacr12.azurecr.io/courseapi/courseapi
+            jagadeshacr12.azurecr.io/tasksapi/tasksapi
           pull-images: false

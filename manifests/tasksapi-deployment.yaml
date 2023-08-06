@@ -16,7 +16,7 @@ spec:
         "kubernetes.io/os": linux
       containers:
         - name: tasksapi
-          image: tfacr08052023.azurecr.io/tasksapi:latest
+          image: jagadeshacr12.azurecr.io/tasksapi:latest
           ports:
             - containerPort: 80
 ---

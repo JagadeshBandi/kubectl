@@ -16,7 +16,7 @@ spec:
         "kubernetes.io/os": linux
       containers:
         - name: courseapi
-          image: tfacr08052023.azurecr.io/courseapi:latest
+          image: jagadeshacr12.azurecr.io/courseapi:latest
           ports:
             - containerPort: 80
 ---
